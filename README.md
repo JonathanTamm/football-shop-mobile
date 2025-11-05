@@ -1,16 +1,36 @@
-# football_shop_mobile
+1. Jelaskan apa itu widget tree pada Flutter dan bagaimana hubungan parent-child (induk-anak) bekerja antar widget.
+Widget tree adalah struktur yang menunjukkan bagaimana widget saling berhubungan satu sama lain dalam Flutter. Widget parent berfungsi sebagai wadah yang mengatur posisi, ukuran, atau perilaku dari widget child di dalamnya. Misalnya, Column dapat berisi beberapa text atau container sebagai anak-anaknya. Dengan demikian, tampilan UI Flutter terbentuk dari gabungan widget-widget yang tersusun secara bertingkat seperti pohon.
 
-A new Flutter project.
+2. Sebutkan semua widget yang kamu gunakan dalam proyek ini dan jelaskan fungsinya.
+-MaterialApp: root widget aplikasi yang menyediakan tema, routing, dan konfigurasi dasar Flutter berbasis Material Design.
+-Scaffold: struktur dasar halaman seperti AppBar, body, dan area lainnya.
+-AppBar: menampilkan bilah atas (toolbar) dengan judul aplikasi.
+-Padding: memberikan jarak di sekitar widget.
+-Column: menyusun widget secara vertikal.
+-Row: menyusun widget secara horizontal.
+-Card: menampilkan konten dalam bentuk kotak dengan bayangan (shadow).
+-Container: tempat untuk mengatur tata letak dan gaya widget lain.
+-Text: menampilkan teks pada layar.
+-GridView.count: menampilkan kumpulan widget dalam bentuk grid dengan jumlah kolom tertentu.
+-Center: menempatkan widget di tengah parent-nya.
+-Icon: menampilkan ikon dari pustaka Material.
+-Material: memberikan efek visual seperti warna dan radius sudut sesuai tema Material Design.
+-InkWell: menangani interaksi sentuhan (tap) pada widget dengan efek ripple.
+-SnackBar: menampilkan pesan sementara di bagian bawah layar.
+-SizedBox: memberikan jarak antar widget dengan tinggi atau lebar tertentu.
 
-## Getting Started
+3. Apa fungsi dari widget MaterialApp? Jelaskan mengapa widget ini sering digunakan sebagai widget root.
+MaterialApp berfungsi sebagai titik awal (root) dari aplikasi berbasis Material Design yang berfungsi untuk mengatur berbagai aspek global seperti tema warna, navigasi halaman, dan konfigurasi tampilan utama (home). Widget ini sering digunakan karena menyediakan kerangka kerja utama untuk seluruh aplikasi dan MaterialApp biasanya digunakan sebagai widget paling atas dalam struktur widget tree.
 
-This project is a starting point for a Flutter application.
+4. Jelaskan perbedaan antara StatelessWidget dan StatefulWidget. Kapan kamu memilih salah satunya?
+StatelessWidget digunakan untuk widget yang tidak memiliki data atau keadaan (state) yang berubah. Contohnya, teks statis atau ikon tetap. Sedangkan statefulWidget digunakan untuk widget yang memiliki keadaan (state) yang dapat berubah seiring waktu, misalnya tombol yang mengubah warna saat ditekan atau input pengguna.
+Kita memilih StatelessWidget jika tampilan tidak perlu diperbarui, sedangkan StatefulWidget digunakan saat tampilan harus bereaksi terhadap interaksi atau perubahan data.
 
-A few resources to get you started if this is your first Flutter project:
+5. Apa itu BuildContext dan mengapa penting di Flutter? Bagaimana penggunaannya di metode build?
+BuildContext adalah objek yang merepresentasikan lokasi sebuah widget dalam widget tree. Ia penting karena digunakan untuk mengakses informasi dari widget parent, seperti tema atau navigasi. Dalam metode build, BuildContext digunakan untuk membangun tampilan dengan mengetahui posisi dan relasi widget terhadap widget lain di tree.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+6. Jelaskan konsep "hot reload" di Flutter dan bagaimana bedanya dengan "hot restart".
+Hot reload memperbarui kode yang sedang berjalan tanpa menghapus state aplikasi. Artinya, perubahan kode (misalnya tampilan UI) langsung terlihat tanpa kehilangan data atau posisi halaman saat ini. Sedangkan hot restart menjalankan ulang seluruh aplikasi dari awal, menghapus seluruh state yang tersimpan (ini mirip seperti menjalankan ulang aplikasi sepenuhnya).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
