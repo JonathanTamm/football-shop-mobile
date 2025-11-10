@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:football_shop_mobile/screens/productlist_form.dart';
+import 'package:football_shop_mobile/widgets/left_drawer.dart';
+import 'package:football_shop_mobile/widgets/product_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -7,11 +10,10 @@ class MyHomePage extends StatelessWidget {
   final String npm = "2406395695"; //npm
   final String kelas = "F"; //kelas
 
-  // Daftar item tombol dengan warna dan ikon
   final List<ItemHomepage> items = [
-    ItemHomepage("All Products", Icons.list, Colors.blue),
-    ItemHomepage("My Products", Icons.shopping_bag, Colors.green),
-    ItemHomepage("Create Product", Icons.add, Colors.red),
+    ItemHomepage("All Products", Icons.shopping_bag, Colors.blue),
+    ItemHomepage("My Products", Icons.list_alt, Colors.green),
+    ItemHomepage("Create Product", Icons.add_box, Colors.red),
   ];
 
   @override
@@ -27,12 +29,15 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+
+      // ✅ Tambahkan drawer di sini
+      drawer: const LeftDrawer(),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Info Card
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -41,9 +46,7 @@ class MyHomePage extends StatelessWidget {
                 InfoCard(title: 'Class', content: kelas),
               ],
             ),
-
             const SizedBox(height: 16.0),
-
             Center(
               child: Column(
                 children: [
@@ -57,8 +60,6 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  // Grid 3 tombol
                   GridView.count(
                     primary: true,
                     padding: const EdgeInsets.all(20),
@@ -108,7 +109,6 @@ class InfoCard extends StatelessWidget {
   }
 }
 
-// Tambahkan atribut color
 class ItemHomepage {
   final String name;
   final IconData icon;
@@ -125,36 +125,40 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: item.color, // Warna sesuai item
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
-          // Snackbar sesuai tombol
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
+          // ✅ Navigasi jika tombol "Create Product" ditekan
+          if (item.name == "Create Product") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProductFormPage(),
+              ),
             );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Kamu menekan tombol ${item.name}!')),
+            );
+          }
         },
         child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(item.icon, color: Colors.white, size: 30),
+              const SizedBox(height: 8.0),
+              Text(
+                item.name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
           ),
         ),
       ),

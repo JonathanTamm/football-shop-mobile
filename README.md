@@ -33,4 +33,16 @@ BuildContext adalah objek yang merepresentasikan lokasi sebuah widget dalam widg
 Hot reload memperbarui kode yang sedang berjalan tanpa menghapus state aplikasi. Artinya, perubahan kode (misalnya tampilan UI) langsung terlihat tanpa kehilangan data atau posisi halaman saat ini. Sedangkan hot restart menjalankan ulang seluruh aplikasi dari awal, menghapus seluruh state yang tersimpan (ini mirip seperti menjalankan ulang aplikasi sepenuhnya).
 
 
+TUGAS 8
 
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+Navigator.push() menambahkan halaman baru di atas halaman yang sedang dibuka sehingga pengguna bisa kembali ke halaman sebelumnya. Sedangkan Navigator.pushReplacement() menggantikan halaman yang aktif dengan halaman baru, jadi halaman lama dihapus dari tumpukan. Dalam Football Shop, Navigator.push() cocok untuk membuka halaman tambah produk, sedangkan Navigator.pushReplacement() lebih cocok untuk berpindah dari halaman login ke halaman utama agar tidak bisa kembali ke login lagi.
+
+2. Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+Scaffold digunakan sebagai kerangka utama halaman yang di dalamnya ada AppBar di bagian atas dan Drawer di sisi kiri. Dengan begitu, setiap halaman seperti beranda dan form produk memiliki struktur dan tampilan yang konsisten di seluruh aplikasi.
+
+3. Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+Widget seperti Padding, SingleChildScrollView, dan ListView membantu menata tampilan agar lebih rapi dan responsif. Misalnya, Padding memberi jarak antar elemen form, SingleChildScrollView memungkinkan form panjang bisa di-scroll, dan ListView cocok untuk menampilkan daftar produk secara vertikal.
+
+4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+Warna tema disesuaikan agar aplikasi punya identitas visual yang konsisten. Misalnya, dengan memakai warna biru untuk tombol All Products, hijau untuk tombol My Products, dan merah untuk Create Product agar terlihat seragam dan mudah dikenali sebagai satu kesatuan tampilan.
